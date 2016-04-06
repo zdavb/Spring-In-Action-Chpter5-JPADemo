@@ -15,8 +15,8 @@ import javax.persistence.PersistenceContext;
 /**
  * Created by dave on 2016/4/5.
  */
+//编码式事务管理
 @Repository
-@Transactional
 public class BoundDaoImpl implements BoundDao {
     private static final String RECENT_BOUND = "select b from Bound b";
     @PersistenceContext
