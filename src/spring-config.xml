@@ -22,6 +22,18 @@
               <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
               <property name="packagesToScan" value="com.dacas.data"/><!--自动扫描com.dacas.data包下的类文件-->
        </bean>
+       <!--JPA事务管理器-->
+       <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+              <property name="entityManagerFactory" ref="emf"/>
+              <property name="jpaDialect" ref="jpaDialect"/>
+       </bean>
+       <!--装配一个EclipseLinkJpaDialect实现-->
+       <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect"/>
+       <!--配置TransactionTemplate-->
+       <!--采用编码式的事务管理方案-->
+       <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+              <property name="transactionManager" ref="transactionManager"/>
+       </bean>
 
        <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
        <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>

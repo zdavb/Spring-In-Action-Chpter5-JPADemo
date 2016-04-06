@@ -15,7 +15,22 @@ public class Main {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
         BoundDao boundDao = context.getBean(BoundDao.class);
         //select
-        Bound bound = boundDao.getBound(4);
+        Bound bound = boundDao.getBound(9);
         System.out.println(bound.toString());
+
+//        //create new
+//        Bound newBound = new Bound();
+//        newBound.setId(9);
+//        newBound.setPersonId(9);
+//        newBound.setBoundTime(new Date());
+//        newBound.setDeviceId(9);
+//        newBound.setStatus(1);
+//        boundDao.saveBound(newBound);
+//
+//        //update Bound
+//        newBound.setPersonId(99);
+//        boundDao.updateBound(newBound);
+//        delete Bound
+        boundDao.deleteBound(bound);
     }
 }
